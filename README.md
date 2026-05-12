@@ -1,49 +1,138 @@
-# LeafMorph — Qt 6 Desktop File Converter
+# 🍃 LeafMorph
 
-A premium glassmorphic desktop utility built with C++17 + Qt 6 Widgets.
+A premium minimalist desktop file conversion utility built with Qt6/C++.
 
-## Requirements
-
-- Qt 6.2+ (Widgets module)
-- CMake 3.16+
-- GCC 10+ or Clang 12+ (C++17)
-- Optional: ffmpeg (for real conversions)
-- Optional: exiftool (for metadata stripping)
+LeafMorph focuses on fast local conversion with a clean modern UI inspired by native macOS/Linux utilities.
 
 ---
 
-## Build on Linux (Ubuntu/Debian)
+# ✨ Features
 
-### 1. Install Qt 6
+## 📂 File Conversion
+
+Supports:
+
+### 🖼️ Images
+
+* PNG
+* JPEG / JPG
+* WEBP
+* BMP
+* TIFF
+* ICO
+* AVIF
+
+### 🎵 Audio
+
+* MP3
+* WAV
+* FLAC
+* OGG
+* AAC
+
+### 🎬 Video
+
+* MP4
+* MKV
+* AVI
+* MOV
+* WEBM
+
+### 📄 Documents
+
+* PDF
+* DOCX
+* ODT
+* RTF
+* TXT
+
+---
+
+# 🔒 Privacy First
+
+LeafMorph is fully local.
+
+Your files never leave your device.
+
+No cloud.
+No telemetry.
+No tracking.
+
+---
+
+# ⚡ Features Included
+
+* Drag & Drop support
+* Multi-file conversion queue
+* Metadata cleaning
+* Lossless compression options
+* File preview
+* Output folder selection
+* Modern glassmorphism UI
+* Native Qt6 desktop experience
+
+---
+
+# 📄 Document Conversion
+
+Document conversion uses LibreOffice in headless mode.
+
+This allows LeafMorph to reliably convert Office and OpenDocument files while keeping everything fully offline.
+
+## Required Dependency
+
+Linux:
 
 ```bash
-sudo apt update
-sudo apt install qt6-base-dev cmake build-essential
+sudo dnf install libreoffice
 ```
 
-Or via the Qt online installer at https://www.qt.io/download-qt-installer
-
-### 2. Install optional conversion tools
+or:
 
 ```bash
-sudo apt install ffmpeg libimage-exiftool-perl
+sudo apt install libreoffice
 ```
 
-### 3. Clone / unzip the project
+LeafMorph automatically uses LibreOffice in the background for document conversion.
+
+---
+
+# 🧰 Dependencies
+
+## Linux
+
+Required:
+
+* Qt6
+* FFmpeg
+* ExifTool
+* LibreOffice
+
+Fedora:
 
 ```bash
-# Assuming the folder is already at ~/LeafMorph
-cd ~/LeafMorph
+sudo dnf install qt6-qtbase-devel ffmpeg perl-Image-ExifTool libreoffice
 ```
 
-### 4. Configure & build
+Ubuntu/Debian:
 
 ```bash
+sudo apt install qt6-base-dev ffmpeg libimage-exiftool-perl libreoffice
+```
+
+---
+
+# 🛠️ Build
+
+```bash
+git clone https://github.com/CeriseeBrandy/LeafMorph.git
+cd LeafMorph
+
 cmake -B build -DCMAKE_BUILD_TYPE=Release
 cmake --build build -j$(nproc)
 ```
 
-### 5. Run
+Run:
 
 ```bash
 ./build/LeafMorph
@@ -51,70 +140,30 @@ cmake --build build -j$(nproc)
 
 ---
 
-## Build on Arch / Manjaro
+# 📦 Planned Releases
 
-```bash
-sudo pacman -S qt6-base cmake gcc ffmpeg perl-image-exiftool
-cmake -B build && cmake --build build -j$(nproc)
-./build/LeafMorph
-```
+Planned:
 
----
-
-## Build on Fedora
-
-```bash
-sudo dnf install qt6-qtbase-devel cmake gcc-c++ ffmpeg perl-Image-ExifTool
-cmake -B build && cmake --build build -j$(nproc)
-./build/LeafMorph
-```
+* Linux AppImage
+* Windows portable build
+* Dark mode
+* Better packaging for dependencies
 
 ---
 
-## Build on macOS (Homebrew)
+# 🖼️ Screenshots
 
-```bash
-brew install qt cmake ffmpeg exiftool
-export PATH="/opt/homebrew/opt/qt/bin:$PATH"
-cmake -B build && cmake --build build -j$(sysctl -n hw.ncpu)
-./build/LeafMorph
-```
+Coming soon.
 
 ---
 
-## Build on Windows (MSVC + Qt 6)
+# 📜 License
 
-1. Install Qt 6 via Qt online installer (select MSVC 2022 component)
-2. Install CMake and Visual Studio 2022
-3. Open Qt 6 command prompt:
-
-```cmd
-cmake -B build -G "Visual Studio 17 2022"
-cmake --build build --config Release
-build\Release\LeafMorph.exe
-```
+MIT License
 
 ---
 
-## Project structure
+# ❤️ Credits
 
-```
-LeafMorph/
-├── CMakeLists.txt      # Build configuration
-├── main.cpp            # Entry point
-├── MainWindow.h        # All widget class declarations
-├── MainWindow.cpp      # Full implementation
-└── resources.qrc      # Qt resource bundle (extensible)
-```
-
-## Key design decisions
-
-| Feature | Implementation |
-|---|---|
-| Frameless window | `Qt::FramelessWindowHint` + mouse drag override |
-| Glass card | `GlassCard` custom widget with layered QPainter gradients |
-| Leaf icon | `LeafIcon` drawn entirely in QPainter (no PNG needed) |
-| Toggle switches | `ToggleSwitch` with `QPropertyAnimation` on thumb position |
-| Drop zone | `QWidget` with `setAcceptDrops(true)` + painted dashes |
-| Background scene | `MainWindow::paintEvent` — radial blobs + sphere shaders |
-| Conversion backend | `QProcess` → ffmpeg + exiftool (graceful fallback if absent) |
+Built by CeriseeBrandy.
+****
