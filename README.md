@@ -6,6 +6,10 @@ LeafMorph focuses on fast local conversion with a clean modern UI inspired by na
 
 ---
 
+# 🖼️ Screenshot
+
+![LeafMorph Screenshot](assets/screenshot.png)
+
 # ✨ Features
 
 ## 📂 File Conversion
